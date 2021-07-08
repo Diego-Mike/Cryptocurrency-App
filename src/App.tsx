@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import "./App.css";
+
+import MarketRanking from "./Website/MarketRanking/MarketRanking";
+import Home from "./Website/Home/Home";
+import SingleCryptoCurrency from "./Website/SingleCryptoCurrency/SingleCryptoCurrency";
+import Error from "./Website/Error/Error";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/ranking" component={MarketRanking} />
+        <Route
+          exact
+          path="/single/crypto/currency"
+          component={SingleCryptoCurrency}
+        />
+        <Route component={Error} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
